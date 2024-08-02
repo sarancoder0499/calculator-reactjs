@@ -74,4 +74,9 @@ describe("Add", () => {
       "negatives not allowed -1,-2"
     );
   });
+
+  it("should ignore if input number contains value greater then 1000", () => {
+    render(<Add numbers="//;\n2;1001" />);
+    expect(screen.getByText(2)).toBeDefined();
+  });
 });

@@ -25,7 +25,11 @@ export default function Add({ numbers }: { numbers: string }): number {
       if (number < 0) {
         negatives.push(number);
       }
-      total += number;
+
+      // Ignore if number greater than 1000
+      if (number <= 1000) {
+        total += number;
+      }
     }
     if (negatives.length > 0) {
       throw new Error(`negatives not allowed ${negatives.join(",")}`);
