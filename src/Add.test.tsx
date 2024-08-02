@@ -31,4 +31,14 @@ describe("Add", () => {
     render(<Add numbers="1-2" />);
     expect(screen.getByText(0)).toBeDefined();
   });
+
+  it("should return 6 if input has n number of strings with , separator", () => {
+    render(<Add numbers="1,2,3" />);
+    expect(screen.getByText(6)).toBeDefined();
+  });
+
+  it("should return 0 if input has n number of strings with , separator and invalid data", () => {
+    render(<Add numbers="1,2,a" />);
+    expect(screen.getByText(0)).toBeDefined();
+  });
 });
