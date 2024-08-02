@@ -41,4 +41,14 @@ describe("Add", () => {
     render(<Add numbers="1,2,a" />);
     expect(screen.getByText(0)).toBeDefined();
   });
+
+  it("should accept \n as a delimiter like , and return total of n numbers if has valid data", () => {
+    render(<Add numbers="1\n2,3" />);
+    expect(screen.getByText(6)).toBeDefined();
+  });
+
+  it("should return 0 if delimiter is not \n or ,", () => {
+    render(<Add numbers="1--2,3" />);
+    expect(screen.getByText(0)).toBeDefined();
+  });
 });

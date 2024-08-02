@@ -1,14 +1,20 @@
 export default function Add({ numbers }: { numbers: string }): number {
   // if numbers has length more than 1 and all index are number then return addition of all
   if (numbers.length > 0) {
+    // Replace //n with comma if present (making delimiter universal)
+    // Filter Empty index
+    const formatted = numbers
+      .replace(/[\\n]+/g, ",")
+      .split(",")
+      .filter((number) => number != "");
     let total = 0;
-    numbers.split(",").map((number) => {
-      if (!/^\d$/.test(number)) {
+    for (let i = 0; i < formatted.length; i++) {
+      if (!/^\d$/.test(formatted[i])) {
         total = 0;
-        return;
+        break;
       }
-      total += parseInt(number);
-    });
+      total += parseInt(formatted[i]);
+    }
     return total;
   }
 
