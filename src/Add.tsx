@@ -14,12 +14,21 @@ export default function Add({ numbers }: { numbers: string }): number {
       .filter((number) => number != "");
 
     let total = 0;
+    const negatives = [];
     for (let i = 0; i < formatted.length; i++) {
-      if (!/^\d$/.test(formatted[i])) {
+      if (!/^-?\d+$/.test(formatted[i])) {
         total = 0;
         break;
       }
-      total += parseInt(formatted[i]);
+      const number = parseInt(formatted[i]);
+      // Add negatives to bag
+      if (number < 0) {
+        negatives.push(number);
+      }
+      total += number;
+    }
+    if (negatives.length > 0) {
+      throw new Error(`negatives not allowed ${negatives.join(",")}`);
     }
     return total;
   }
