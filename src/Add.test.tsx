@@ -51,4 +51,9 @@ describe("Add", () => {
     render(<Add numbers="1--2,3" />);
     expect(screen.getByText(0)).toBeDefined();
   });
+
+  it("should support dynamic delimiter and return 3 value based on existing implementation", () => {
+    render(<Add numbers="//;\n1;2" />);
+    expect(screen.getByText(3)).toBeDefined();
+  });
 });
