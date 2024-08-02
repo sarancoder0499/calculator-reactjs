@@ -21,4 +21,14 @@ describe("Add", () => {
     render(<Add numbers="a" />);
     expect(screen.getByText("0")).toBeDefined();
   });
+
+  it("should return 3 if input string length has two number with , separator", () => {
+    render(<Add numbers="1,2" />);
+    expect(screen.getByText(3)).toBeDefined();
+  });
+
+  it("should return 0 if input string length has two number with - separator", () => {
+    render(<Add numbers="1-2" />);
+    expect(screen.getByText(0)).toBeDefined();
+  });
 });
