@@ -1,7 +1,7 @@
-import getDelimiters from "./lib/helper";
-import { MAX_LIMIT } from "./lib/constant";
-import { MSG } from "./lib/message";
-import { TAdd } from "./lib/types";
+import getDelimiters from "../lib/helper";
+import { MAX_LIMIT } from "../lib/constant";
+import { MSG } from "../lib/message";
+import { TAdd } from "../lib/types";
 
 export default function Add({ numbers }: TAdd): number {
   // if numbers has length more than 1 and all index are number then return addition of all

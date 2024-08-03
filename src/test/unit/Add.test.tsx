@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import Add from "./Add";
+import Add from "../../components/Add";
 
 describe("Add", () => {
   const originalConsoleError = console.error;
