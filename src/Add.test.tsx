@@ -54,7 +54,7 @@ describe("Add", () => {
     expect(screen.getByText(0)).toBeDefined();
   });
 
-  it("should accept \n as a delimiter like , and return total of n numbers if has valid data", () => {
+  it("should accept '\\n' as a delimiter like , and return total of n numbers if has valid data", () => {
     render(<Add numbers="1\n2,3" />);
     expect(screen.getByText(6)).toBeDefined();
   });
@@ -78,5 +78,15 @@ describe("Add", () => {
   it("should ignore if input number contains value greater then 1000", () => {
     render(<Add numbers="//;\n2;1001" />);
     expect(screen.getByText(2)).toBeDefined();
+  });
+
+  it("should allow any length of delimiter with in the []", () => {
+    render(<Add numbers="//[*][%][--]\n1*2%3--4" />);
+    expect(screen.getByText(10)).toBeDefined();
+  });
+
+  it("should return 0 if any one of the delimiter is not provided", () => {
+    render(<Add numbers="//[][%]\n1*2%3" />);
+    expect(screen.getByText(0)).toBeDefined();
   });
 });
