@@ -1,17 +1,17 @@
 import { useState } from "react";
 import Add from "./Add";
 
-function App() {
+function StringCalculator() {
   const [input, setInput] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsVisible(() => false);
     setInput(e.currentTarget.value);
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setIsVisible(() => true);
-    console.log(isVisible);
   };
 
   return (
@@ -21,7 +21,7 @@ function App() {
           type="text"
           value={input}
           onChange={handleInput}
-          data-test-id="input-item"
+          data-testid="input-item"
         />
         <button onClick={handleSubmit}>Submit</button>
         <br />
@@ -31,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default StringCalculator;
